@@ -1,5 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
+
+function useCountdown(target: Date) {
+  const calc = () => {
+    const diff = target.getTime() - Date.now();
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    return {
+      days: Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      minutes: Math.floor((diff % 3600000) / 60000),
+      seconds: Math.floor((diff % 60000) / 1000),
+    };
+  };
+  const [time, setTime] = useState(calc);
+  useEffect(() => {
+    const id = setInterval(() => setTime(calc()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
 
 const schedule = [
   {
@@ -50,6 +69,7 @@ const departments = [
 export default function Index() {
   const [form, setForm] = useState({ name: "", department: "", startDate: "" });
   const [submitted, setSubmitted] = useState(false);
+  const countdown = useCountdown(new Date("2026-05-15T10:00:00"));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,10 +114,29 @@ export default function Index() {
           </span>
         </h1>
 
-        <p className="animate-fade-up text-lg mb-10 max-w-md mx-auto"
+        <p className="animate-fade-up text-lg mb-8 max-w-md mx-auto"
           style={{ animationDelay: "0.2s", color: "rgba(255,255,255,0.6)" }}>
           Тёплая встреча для новых коллег — знакомства, обед и всё, что нужно знать о компании
         </p>
+
+        {/* Countdown */}
+        <div className="animate-fade-up flex justify-center gap-3 mb-10"
+          style={{ animationDelay: "0.25s" }}>
+          {[
+            { value: countdown.days, label: "дней" },
+            { value: countdown.hours, label: "часов" },
+            { value: countdown.minutes, label: "минут" },
+            { value: countdown.seconds, label: "секунд" },
+          ].map(({ value, label }, i) => (
+            <div key={label} className="flex flex-col items-center px-4 py-3 rounded-2xl min-w-[64px]"
+              style={{ background: i === 3 ? "rgba(255,210,0,0.12)" : "rgba(255,255,255,0.07)", border: i === 3 ? "1px solid rgba(255,210,0,0.4)" : "1px solid rgba(255,255,255,0.08)" }}>
+              <span className="text-2xl font-black tabular-nums leading-none" style={{ color: i === 3 ? "#FFD200" : "#ffffff" }}>
+                {String(value).padStart(2, "0")}
+              </span>
+              <span className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>{label}</span>
+            </div>
+          ))}
+        </div>
 
         <div className="animate-fade-up flex flex-col sm:flex-row gap-4 justify-center"
           style={{ animationDelay: "0.3s" }}>
