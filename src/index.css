@@ -4,13 +4,8 @@
 
 @layer base {
   :root {
-    --background: 222 45% 97%;
-    --foreground: 222 50% 12%;
-
-    --brand-yellow: #ffd200;
-    --brand-navy: #1a2a5e;
-    --brand-navy-light: #243370;
-    --brand-yellow-soft: #fff8cc;
+    --background: 30 40% 97%;
+    --foreground: 20 25% 18%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
