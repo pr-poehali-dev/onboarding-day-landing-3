@@ -62,8 +62,21 @@ export default function Index() {
       <div className="fixed top-0 right-0 w-96 h-96 rounded-full opacity-10 pointer-events-none" style={{ background: "radial-gradient(circle, #FFD200 0%, transparent 70%)", transform: "translate(30%, -30%)" }} />
       <div className="fixed bottom-0 left-0 w-80 h-80 rounded-full opacity-10 pointer-events-none" style={{ background: "radial-gradient(circle, #FFD200 0%, transparent 70%)", transform: "translate(-30%, 30%)" }} />
 
+      {/* HEADER */}
+      <header className="relative px-6 pt-8 flex justify-center">
+        <div className="flex items-center gap-2.5">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ background: "#FFD200" }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <polygon points="10,2 12.4,7.5 18.5,7.5 13.8,11.3 15.6,17 10,13.5 4.4,17 6.2,11.3 1.5,7.5 7.6,7.5" fill="#1A2A5E"/>
+            </svg>
+          </div>
+          <span className="text-xl font-black tracking-wide" style={{ color: "#FFD200" }}>СТОЛОТО</span>
+        </div>
+      </header>
+
       {/* HERO */}
-      <section className="relative px-6 pt-20 pb-16 text-center max-w-3xl mx-auto">
+      <section className="relative px-6 pt-12 pb-16 text-center max-w-3xl mx-auto">
         <div className="animate-fade-in" style={{ animationDelay: "0s" }}>
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-6"
             style={{ background: "rgba(255,210,0,0.15)", color: "#FFD200", border: "1px solid rgba(255,210,0,0.3)" }}>
