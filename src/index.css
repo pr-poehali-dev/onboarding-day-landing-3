@@ -4,15 +4,13 @@
 
 @layer base {
   :root {
-    --background: 30 40% 97%;
-    --foreground: 20 25% 18%;
+    --background: 222 45% 97%;
+    --foreground: 222 50% 12%;
 
-    --warm-peach: 22 90% 92%;
-    --warm-coral: 16 80% 75%;
-    --warm-amber: 38 95% 78%;
-    --warm-cream: 40 60% 96%;
-    --warm-brown: 20 30% 28%;
-    --warm-green: 142 45% 68%;
+    --brand-yellow: #ffd200;
+    --brand-navy: #1a2a5e;
+    --brand-navy-light: #243370;
+    --brand-yellow-soft: #fff8cc;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
